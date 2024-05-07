@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_RodrigoHernandez26_sample_spring17_1715105232387-push-trigger-input-set
+  identifier: Build_RodrigoHernandez26_sample_spring17_1715105232387pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_RodrigoHernandez26_sample_spring17_1715105232387
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
