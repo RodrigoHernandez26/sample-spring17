@@ -17,7 +17,7 @@ class DemoApplicationTests {
 	@Test
 	void testHelloWorld() {
 		String result = demoController.hello();
-		assert(result.equals("Hello, World!"));
+		assert(result.equals("Hello World!"));
 	}
 
 }
