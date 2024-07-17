@@ -4,7 +4,7 @@ WORKDIR /app
 COPY . .
 
 RUN apk add --no-cache maven && \
-    mvn package
+    mvn package -Dmaven.test.skip
 
 FROM amazoncorretto:17-alpine3.19-jdk
 

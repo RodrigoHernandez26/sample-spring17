@@ -1,5 +1,5 @@
 deployment:
   name: sample-java17
   replicas: 2
-  image: nginx:1.7.9
-  port: 80
+  image: 295439051676.dkr.ecr.sa-east-1.amazonaws.com/sample-java17:0.0.10-SNAPSHOT
+  port: 8080
