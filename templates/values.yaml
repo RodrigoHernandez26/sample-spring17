@@ -1,6 +1,6 @@
 name: <+pipeline.stages.Build.spec.execution.steps.get_project_info.output.outputVariables.projectName>
 replicas: 1
-image: <+artifact.image>:<+artifact.tag>
+image: <+artifact.image>
 port: 8080
 targetPort: 8080
 serviceType: LoadBalancer
