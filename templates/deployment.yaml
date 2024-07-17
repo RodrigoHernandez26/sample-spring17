@@ -4,7 +4,7 @@ metadata:
   creationTimestamp: null
   labels:
     app: {{ .Values.deployment.name }}
-  name: {{ .Values.deployment.name }}
+  name: {{ .Values.deployment.name }}-deployment
 spec:
   replicas: {{ .Values.deployment.replicas }}
   selector:
@@ -25,3 +25,17 @@ spec:
         ports:
         - containerPort: {{ .Values.deployment.port }}
 status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.deployment.name }}-service
+spec:
+  selector:
+    app: {{ .Values.deployment.name }}
+  ports:
+    - name: http
+      protocol: TCP
+      port: {{ .Values.deployment.port }}
+      targetPort: {{ .Values.deployment.port }}
+  type: LoadBalancer

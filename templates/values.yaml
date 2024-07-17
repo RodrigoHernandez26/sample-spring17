@@ -1,0 +1,5 @@
+deployment:
+  name: sample-java17
+  replicas: 2
+  image: nginx:1.7.9
+  port: 80
