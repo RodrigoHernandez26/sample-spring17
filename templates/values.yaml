@@ -1,5 +1,10 @@
-deployment:
-  name: sample-java17
-  replicas: 2
-  image: 295439051676.dkr.ecr.sa-east-1.amazonaws.com/sample-java17:0.0.11-SNAPSHOT
-  port: 8080
+name: <+pipeline.stages.Build.spec.execution.steps.get_project_info.output.outputVariables.projectName>
+replicas: 1
+image: <+artifact.image>:<+artifact.tag>
+port: 8080
+targetPort: 8080
+serviceType: LoadBalancer
+
+createNamespace: true
+namespace:
+  name: <+pipeline.stages.Build.spec.execution.steps.get_project_info.output.outputVariables.projectName>-<+pipeline.stages.deployprod.spec.env.name>

@@ -1,41 +1,47 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
-    app: {{ .Values.deployment.name }}
-  name: {{ .Values.deployment.name }}-deployment
+    app: {{ .Values.name }}
+  name: {{ .Values.name }}-deployment
 spec:
-  replicas: {{ .Values.deployment.replicas }}
+  replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
-      app: {{ .Values.deployment.name }}
+      app: {{ .Values.name }}
   template:
     metadata:
       labels:
-        app: {{ .Values.deployment.name }}
+        app: {{ .Values.name }}
     spec:
       containers:
-      - name: {{ .Values.deployment.name }}
-        image: {{ .Values.deployment.image }}
+      - name: {{ .Values.name }}
+        image: {{ .Values.image }}
         resources:
           limits:
             memory: "128Mi"
             cpu: "128m"
         ports:
-        - containerPort: {{ .Values.deployment.port }}
+        - containerPort: {{ .Values.port }}
 status: {}
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.deployment.name }}-service
+  name: {{ .Values.name }}-service
 spec:
   selector:
-    app: {{ .Values.deployment.name }}
+    app: {{ .Values.name }}
   ports:
     - name: http
       protocol: TCP
-      port: {{ .Values.deployment.port }}
-      targetPort: {{ .Values.deployment.port }}
-  type: LoadBalancer
+      port: {{ .Values.port }}
+      targetPort: {{ .Values.targetPort }}
+  type: {{ .Values.serviceType }}
+---
+{{- if .Values.createNamespace}}
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{.Values.namespace.name}}
+{{- end}}
