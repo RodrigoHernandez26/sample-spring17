@@ -8,6 +8,6 @@ public class DemoController {
 
     @GetMapping("/")
     public String hello() {
-        return "Hello World PORRAAAA!";
+        return "NAMESPACE: " + System.getenv("namespace");
     }
 }
