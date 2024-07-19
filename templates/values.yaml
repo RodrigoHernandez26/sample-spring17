@@ -5,9 +5,11 @@ port: 8080
 targetPort: 8080
 serviceType: LoadBalancer
 
+createNamespace: true
 namespace:
   name: <+infra.namespace>
 
+createConfigMap: true
 env:
   config:
     namespace: <+infra.namespace>

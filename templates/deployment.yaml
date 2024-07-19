@@ -1,4 +1,4 @@
-{{- if .Values.env.config}}
+{{- if .Values.createConfigMap}}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -26,10 +26,10 @@ spec:
       containers:
       - name: {{ .Values.name }}
         image: {{ .Values.image }}
-        {{- if .Values.env.config }}
+        {{ - if .Values.createConfigMap }}
         envFrom:
           - configMapRef:
-            name: {{.Values.name}}-configmap
+            name: {{ .Values.name }}-configmap
         {{- end}}
         resources:
           limits:
@@ -53,7 +53,7 @@ spec:
       targetPort: {{ .Values.targetPort }}
   type: {{ .Values.serviceType }}
 ---
-{{- if .Values.namespace}}
+{{- if .Values.createNamespace}}
 apiVersion: v1
 kind: Namespace
 metadata:
