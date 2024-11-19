@@ -1,0 +1,7 @@
+applications:
+    - name: sample-java-17
+      random-route: true
+      buildpacks:
+        - java_buildpack_offline
+      instances: 1
+      memory: 1G     
