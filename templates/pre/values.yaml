@@ -1,0 +1,8 @@
+# name: <+pipeline.stages.Build.spec.execution.steps.get_project_info.output.outputVariables.projectName>
+name: sample-java17-pre
+replicas: 1
+# image: <+artifact.image>
+image: 295439051676.dkr.ecr.sa-east-1.amazonaws.com/sample-java17:0.0.1-SNAPSHOT
+port: 8080
+targetPort: 8080
+serviceType: LoadBalancer
