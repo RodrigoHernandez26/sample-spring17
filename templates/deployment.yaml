@@ -26,11 +26,6 @@ spec:
       containers:
       - name: {{ .Values.name }}
         image: {{ .Values.image }}
-        {{ - if .Values.createConfigMap }}
-        envFrom:
-          - configMapRef:
-            name: {{ .Values.name }}-configmap
-        {{- end}}
         resources:
           limits:
             memory: "128Mi"
@@ -52,10 +47,4 @@ spec:
       port: {{ .Values.port }}
       targetPort: {{ .Values.targetPort }}
   type: {{ .Values.serviceType }}
----
-{{- if .Values.createNamespace}}
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: {{.Values.namespace.name}}
-{{- end}}
+
